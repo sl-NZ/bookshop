@@ -15,7 +15,12 @@
                 "dbaeumer.vscode-eslint",
                 "esbenp.prettier-vscode",
                 "ms-azuretools.vscode-docker"
-            ]
+            ],
+            "settings": {
+                "[handlebars]": {
+                    "editor.defaultFormatter": "vscode.html-language-features"
+                }
+            }
         }
     },
     "forwardPorts": [
