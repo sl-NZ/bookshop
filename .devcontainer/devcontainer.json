@@ -1,0 +1,25 @@
+{
+    "name": "bookshop",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "..",
+        "args": {}
+    },
+    "runArgs": [
+        "-p",
+        "3000:3000"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    },
+    "forwardPorts": [
+        3000
+    ],
+    "postCreateCommand": "npm install"
+}
