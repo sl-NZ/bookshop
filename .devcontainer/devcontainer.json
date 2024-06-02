@@ -22,5 +22,5 @@
         3000,
         9229
     ],
-    "postCreateCommand": "npm install"
+    "postCreateCommand": "npm install;git config --global --add safe.directory /workspaces/bookshop"
 }
