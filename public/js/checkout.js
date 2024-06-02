@@ -2,8 +2,8 @@
 // const stripe = Stripe(process.env.STRIPE_PUBLISHABLE_KEY);
 // const stripe = Stripe("pk_test_51PN6q42LxWzCRfRxa7jIqb4TBncTL5U3OPCuofI0qHfv0LnacVydqjTuEoYnEzogl26O5YHt3TJ7QcjEc17s6ftv005baoZ4pn");
 
-// The items the customer wants to buy
-const items = [{ id: "xl-tshirt" }];
+// Retrieve the items the customer wants to buy from search Param on Checkout page Load
+const item = { id: new URLSearchParams(window.location.search).get("item") };
 
 let elements;
 
@@ -19,7 +19,7 @@ async function initialize() {
   const response = await fetch("/create-payment-intent", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ items }),
+    body: JSON.stringify({ items: [item]  }),
   });
   const { clientSecret } = await response.json();
 
