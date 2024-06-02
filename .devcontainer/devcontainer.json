@@ -19,7 +19,8 @@
         }
     },
     "forwardPorts": [
-        3000
+        3000,
+        9229
     ],
     "postCreateCommand": "npm install"
 }
