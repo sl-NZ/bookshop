@@ -37,6 +37,8 @@ Navigate to [http://localhost:3000](http://localhost:3000) to view the index pag
 
 - https://docs.stripe.com/payments/quickstart?lang=node&client=html
 - https://docs.stripe.com/payments/elements
+- https://docs.stripe.com/api/payment_intents/create
+- https://docs.stripe.com/js/elements_object/create_payment_element
 - https://docs.stripe.com/js/elements_object/create_payment_element
 - https://github.com/stripe-samples/accept-a-payment/blob/main/payment-element/server/node/server.js
 - https://docs.stripe.com/libraries/stripejs-esmodule
