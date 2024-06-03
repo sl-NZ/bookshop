@@ -1,9 +1,8 @@
 // This is your test publishable API key.
-// const stripe = Stripe(process.env.STRIPE_PUBLISHABLE_KEY);
-// const stripe = Stripe("pk_test_51PN6q42LxWzCRfRxa7jIqb4TBncTL5U3OPCuofI0qHfv0LnacVydqjTuEoYnEzogl26O5YHt3TJ7QcjEc17s6ftv005baoZ4pn");
 
 // Retrieve the items the customer wants to buy from search Param on Checkout page Load
 const item = { id: new URLSearchParams(window.location.search).get("item") };
+const title = document.querySelector("h5").innerText;
 
 let elements;
 
@@ -19,17 +18,23 @@ async function initialize() {
   const response = await fetch("/create-payment-intent", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ items: [item]  }),
+    body: JSON.stringify({ items: [item], title: title }),
   });
   const { clientSecret } = await response.json();
 
   const appearance = {
-    theme: 'stripe',
+    theme: "stripe",
   };
   elements = stripe.elements({ appearance, clientSecret });
 
   const paymentElementOptions = {
     layout: "tabs",
+    fields: {
+      billing_details: {
+        name: "auto",
+        email: "auto",
+      },
+    },
   };
 
   const paymentElement = elements.create("payment", paymentElementOptions);
@@ -40,11 +45,20 @@ async function handleSubmit(e) {
   e.preventDefault();
   setLoading(true);
 
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+
   const { error } = await stripe.confirmPayment({
     elements,
     confirmParams: {
       // Make sure to change this to your payment completion page
-      return_url: "http://localhost:3000/checkout.html",
+      return_url: "http://localhost:3000/success",
+      payment_method_data: {
+        billing_details: {
+          name: name,
+          email: email,
+        },
+      },
     },
   });
 

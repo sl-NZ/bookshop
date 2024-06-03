@@ -28,26 +28,28 @@
       </div>
       <div class="card box-shadow mt-40">
         <div class="card-body">
-          <form name="payment-form">
-            <div>
-              <label for="email">Email address</label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="you@email.com">
-            </div>
-            <div class="mt-20 text-center text-secondary border-placeholder">
-              <form id="payment-form">
-                <div id="payment-element">
-                  <!--Stripe.js injects the Payment Element-->
-                </div>
-                <div class="mt-20">
-                  <button id="submit" type="submit" class="btn btn-lg btn-block btn-primary">Pay
+          <div class="mt-20 text-center text-secondary">
+            <form id="payment-form">
+              <div class="mt-20 text-center text-secondary">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+              </div>
+              <div class="mt-20">
+                <input type="email" class="form-control" id="email" name="email" placeholder="your@email.com" required>
+              </div>
+              <div id="payment-element" class="mt-20">
+                <!--Stripe.js injects the Payment Element-->
+              </div>
+              <div class="mt-20">
+                <button id="submit" type="submit" class="btn btn-lg btn-block btn-primary">
+                  <div class="spinner hidden" id="spinner"></div>
+                  <span id="button-text">Pay
                     $<span class="amount" data-amount="{{amount}}"></span>
-                  </button>
-                </div>
-                <div id="payment-message" class="hidden"></div>
-              </form>
-            </div>
-
-          </form>
+                  </span>
+                </button>
+              </div>
+              <div id="payment-message" class="hidden"></div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
