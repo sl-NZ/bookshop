@@ -30,6 +30,12 @@ async function initialize() {
 
   const paymentElementOptions = {
     layout: "tabs",
+    fields: {
+      billing_details: {
+        name: "auto",
+        email: "auto",
+      },
+    },
   };
 
   const paymentElement = elements.create("payment", paymentElementOptions);
@@ -40,11 +46,20 @@ async function handleSubmit(e) {
   e.preventDefault();
   setLoading(true);
 
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+
   const { error } = await stripe.confirmPayment({
     elements,
     confirmParams: {
       // Make sure to change this to your payment completion page
       return_url: "http://localhost:3000/success",
+      payment_method_data: {
+        billing_details: {
+          name: name,
+          email: email,
+        },
+      },
     },
   });
 
