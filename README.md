@@ -31,9 +31,9 @@ cd bookshop
 5. Once the container is up and running, creaate a `.env` file similar to the `sample.env` file and add your stripe test API keys from the [stripe dashboard](https://dashboard.stripe.com)
 6. You can start the application by Run --> Start Debugging or `F5` or by running the below command in the terminal.
 
-```bash
-npm start
-```
+    ```bash
+    npm start
+    ```
 
     - The app starts on port 3000 and debug port 9229
     - Dev container is setup for full debugging capabilities
