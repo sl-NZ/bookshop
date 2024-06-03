@@ -1,13 +1,18 @@
 <main>
   <div class="mt-40 text-center text-success">
     <h1>
-      <i class="far fa-check-circle"></i> 
+      <i class="far fa-check-circle"></i>
       Success!
     </h1>
   </div>
   <div class="mt-40 text-center">
     <div class="mt-20 text-center text-secondary border-placeholder">
-      Add details about the payment here!
+      A Payment of <strong>${{amountInDollars}}{{currency}}</strong> has been made, the payment intent ID is
+      <strong>{{payment_intent}}</strong>.
     </div>
+    <div class="mt-20 text-center text-secondary border-placeholder">
+      Your book <strong>{{bookTitle}}</strong> will be shipped to in 3-5 business days via Stripe Press
+    </div>
+  </div>
   </div>
 </main>
