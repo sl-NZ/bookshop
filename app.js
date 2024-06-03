@@ -64,8 +64,24 @@ app.get("/checkout", function (req, res) {
 /**
  * Success route
  */
-app.get("/success", function (req, res) {
-  res.render("success");
+app.get("/success", async function (req, res) {
+  const { payment_intent } = req.query;
+
+  const paymentIntent = await stripe.paymentIntents.retrieve(payment_intent);
+
+  console.log(paymentIntent);
+
+  // Convert amount from cents to dollars
+  const amountInDollars = (paymentIntent.amount / 100).toFixed(2);
+  const currency = paymentIntent.currency.toUpperCase();
+  const bookTitle = paymentIntent.metadata.book_title;
+
+  res.render("success", {
+    payment_intent,
+    amountInDollars,
+    currency,
+    bookTitle,
+  });
 });
 
 /**
