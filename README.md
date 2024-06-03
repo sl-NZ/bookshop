@@ -1,6 +1,6 @@
 # Take home project
 
-This is a simple e-commerce application that a customer can use to purchase a book, but it's missing the payments functionality — your goal is to integrate Stripe to get this application running!
+This is a simple e-commerce application that a customer can use to purchase a book. The code for this app was originally not setup for pamyents but since has been added and the original code remains [here](https://github.com/mattmitchell6/sa-takehome-project-node).
 
 ## Candidate instructions
 
@@ -14,22 +14,31 @@ We're using the [Bootstrap](https://getbootstrap.com/docs/4.6/getting-started/in
 
 To simplify this project, we're also not using any database here, either. Instead `app.js` includes a simple switch statement to read the GET params for `item`.
 
-To get started, clone the repository and run `npm install` to install dependencies:
+## Local Development Setup
 
+For below instructions you will need vscode and docker installed on your machine.
+
+1. Clone the repository to your local
+
+```bash
+git clone https://github.com/sl-NZ/bookshop
+cd bookshop
 ```
-git clone https://github.com/mattmitchell6/sa-takehome-project-node && cd sa-takehome-project-node
-npm install
-```
 
-Rename `sample.env` to `.env` and populate with your Stripe account's test API keys
+2. Open the repository folder `bookshop` using vscode
+3. Open the command palette (`Cmd+Shift+P` or `F1`) and run the command `>Dev Containers: Rebuild and Reopen in Container`
+4. This will reopen the project in a docker container with all the required dependencies installed, this may take some time the first time as it will download the required docker images.
+5. Once the container is up and running, creaate a `.env` file similar to the `sample.env` file and add your stripe test API keys from the [stripe dashboard](https://dashboard.stripe.com)
+6. You can start the application by Run --> Start Debugging or `F5` or by running the below command in the terminal.
 
-Then run the application locally:
-
-```
+```bash
 npm start
 ```
 
-Navigate to [http://localhost:3000](http://localhost:3000) to view the index page.
+    - The app starts on port 3000 and debug port 9229
+    - Dev container is setup for full debugging capabilities
+
+7. Navigate to [http://localhost:3000](http://localhost:3000) to view the index page.
 
 ### SL Notes
 
