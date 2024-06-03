@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
 require('dotenv').config();
-const stripe = require('stripe');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 var app = express();
 
@@ -53,7 +53,8 @@ app.get('/checkout', function(req, res) {
   res.render('checkout', {
     title: title,
     amount: amount,
-    error: error
+    error: error,
+    stripePublicKey: process.env.STRIPE_PUBLISHABLE_KEY
   });
 });
 
@@ -62,6 +63,49 @@ app.get('/checkout', function(req, res) {
  */
 app.get('/success', function(req, res) {
   res.render('success');
+});
+
+/**
+  // Calculate the amount to be paid per item and return it to the client
+ * @param {*} items 
+ * @returns amount to be charged
+ */
+const calculateOrderAmount = (items) => {
+  let amount;
+  switch (items[0].id) {
+    case '1':
+      amount = 2300
+      break;
+    case '2':
+      amount = 2500
+      break;
+    case '3':
+      amount = 2800
+      break;
+    default:
+      amount = 0
+      break;
+  }
+
+  return amount;
+};
+
+app.post("/create-payment-intent", async (req, res) => {
+  const { items } = req.body;
+
+  // Create a PaymentIntent with the order amount and currency
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: calculateOrderAmount(items),
+    currency: "nzd",
+    // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
+    automatic_payment_methods: {
+      enabled: true,
+    },
+  });
+
+  res.send({
+    clientSecret: paymentIntent.client_secret,
+  });
 });
 
 /**
