@@ -65,6 +65,11 @@ app.get('/success', function(req, res) {
   res.render('success');
 });
 
+/**
+  // Calculate the amount to be paid per item and return it to the client
+ * @param {*} items 
+ * @returns amount to be charged
+ */
 const calculateOrderAmount = (items) => {
   let amount;
   switch (items[0].id) {
@@ -81,9 +86,7 @@ const calculateOrderAmount = (items) => {
       amount = 0
       break;
   }
-  // Replace this constant with a calculation of the order's amount
-  // Calculate the order total on the server to prevent
-  // people from directly manipulating the amount on the client
+
   return amount;
 };
 
