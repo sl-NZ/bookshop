@@ -19,12 +19,12 @@ async function initialize() {
   const response = await fetch("/create-payment-intent", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ items: [item]  }),
+    body: JSON.stringify({ items: [item] }),
   });
   const { clientSecret } = await response.json();
 
   const appearance = {
-    theme: 'stripe',
+    theme: "stripe",
   };
   elements = stripe.elements({ appearance, clientSecret });
 
@@ -44,7 +44,7 @@ async function handleSubmit(e) {
     elements,
     confirmParams: {
       // Make sure to change this to your payment completion page
-      return_url: "http://localhost:3000/checkout.html",
+      return_url: "http://localhost:3000/success.html",
     },
   });
 
