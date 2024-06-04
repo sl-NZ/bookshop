@@ -85,7 +85,20 @@ After some thought I decided that I need to breakdown the problem into multiple 
 - I had some trouble moving on from the checkout page to the success page when the submit button was pressed and that took some time to debug, i evenutally found that the quickstart example I had use had a form name `payment-form` but also there was another existing form called `payment-form` in the `checkout.hbs` file that was causing the issue as the `checkout.js` was not able to find the correct form to submit.
 - Overall the code space is not something I am familiar with so a general interesting challenge but I really enjoyed thinking about the problem in terms of the ideal flow and the rules of engagmene between the client and server side when interacting with stripe.
 
-#### Documentation Used
+### Future Improvements and Robustness
+- The backend code would be placed into a service layer to make it more modular and testable.
+- The frontend code would be refactored to use a more modern framework like React I believe stripe supports [this](https://docs.stripe.com/stripe-js/react).
+- A lot more validation through the flow, e.g. email etc.
+- The items selected are running in memory though a database would be used in a real world scenario.
+- The success endpoint retrieves information from stripe using the payment intent id, this could be stored in a database for future reference though I also was wondering if this would be best endpoint to retrieve details
+- I note stripe has webhooks that could be fired in different events, flows such as a email to the customer could be added
+- Adding a cart system where customers could purchase multiple books at once.
+- More options around payment methods as well as capturing more information about the customer.
+- Possibly looking into options of whether we can move away from `custom pamyent flow` to `stripe hosted page` or `embedded form` to reduce the amount of client side code required.
+- 1 click checkout for returning customers.
+- Testing around the core and considering security implications for the setup.
+
+### Documentation Used
 
 - https://docs.stripe.com/payments/quickstart?lang=node&client=html
 - https://docs.stripe.com/payments/elements
