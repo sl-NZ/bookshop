@@ -66,8 +66,6 @@ Frontend Uses via Stripe JS:
 - `stripe.retrievePaymentIntent` to retrieve the payment intent and used to determine payment status. Reference to API docs is https://docs.stripe.com/js/payment_intents/retrieve_payment_intent. This is called when the checkout page loads.
 
 
-### SL Notes
-
 #### Reference Links
 
 - https://docs.stripe.com/payments/quickstart?lang=node&client=html
