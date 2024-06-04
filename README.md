@@ -39,6 +39,11 @@ For below instructions you will need vscode and docker installed on your machine
 7. Navigate to [http://localhost:3000](http://localhost:3000) to view the index page.
 
 ## How does the Solution Work
+Solutions presented where the user can select a single book to purchase from the landing page of the Stripe Press program. 
+
+The user can select a book by clicking on the purchase button. The purchase button will trigger the stripe checkout flow which loads the stripe checkout modal on the checkout page. Additionally the checkout page has two additional form items to collect the user's name and email address. The user can then enter their payment details and complete the purchase within the stripe modal window.
+
+The user can then enter their payment details and complete the purchase
 
 ### Architecture Sequence Diagram
 
