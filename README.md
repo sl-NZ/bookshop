@@ -52,6 +52,20 @@ During the `stripe.confirmPayment` call a `return_url` is set to the success end
 
 ![Architecture Sequence Diagram](/docs/img/stripe_bookshop_architecture.png)
 
+### Stripe APIs Used
+
+Backend uses:
+
+- `stripe.paymentIntents.create` to create a payment intent with the amount of the book and the currency of the book including a metadata field with the book title. This can be found in the `POST /create-payment-intent` endpoint. Reference to API docs is https://docs.stripe.com/api/payment_intents/create
+- `stripe.paymentIntents.retrieve` to retrieve the current status of the payment intent. This is done as part of the endpoint `/success` call, which retrieves information and passes to frontend to display after successful pamyent. Reference to API docs is https://docs.stripe.com/api/payment_intents/retrieve
+
+Frontend Uses via Stripe JS:
+
+- `stripe.elements` to create a payment element. Reference to API docs is https://docs.stripe.com/js/elements_object/create_payment_element. This is rendered using the clientSecret passed from backend.
+- `stripe.confirmPayment` to confirm the payment. Reference to API docs is https://docs.stripe.com/js/payment_intents/confirm_payment. This is called when the user submits the payment form.
+- `stripe.retrievePaymentIntent` to retrieve the payment intent and used to determine payment status. Reference to API docs is https://docs.stripe.com/js/payment_intents/retrieve_payment_intent. This is called when the checkout page loads.
+
+
 ### SL Notes
 
 #### Reference Links
