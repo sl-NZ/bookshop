@@ -108,3 +108,4 @@ After some thought I decided that I need to breakdown the problem into multiple 
 - https://docs.stripe.com/js/payment_intents/confirm_payment
 - https://github.com/stripe-samples/accept-a-payment/blob/main/payment-element/server/node/server.js
 - https://docs.stripe.com/libraries/stripejs-esmodule
+- OpenAI GPT-4o was used in terms of guidance in troubleshooting, specifically around frontend knowledge gaps.
