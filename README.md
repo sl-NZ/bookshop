@@ -39,11 +39,14 @@ For below instructions you will need vscode and docker installed on your machine
 7. Navigate to [http://localhost:3000](http://localhost:3000) to view the index page.
 
 ## How does the Solution Work
-Solutions presented where the user can select a single book to purchase from the landing page of the Stripe Press program. 
 
-The user can select a book by clicking on the purchase button. The purchase button will trigger the stripe checkout flow which loads the stripe checkout modal on the checkout page. Additionally the checkout page has two additional form items to collect the user's name and email address. The user can then enter their payment details and complete the purchase within the stripe modal window.
+Solutions presented where the user can select a single book to purchase from the landing page of the Stripe Press Bookshop.
 
-The user can then enter their payment details and complete the purchase
+The user can select a book by clicking on the purchase button. The purchase button will trigger the stripe checkout flow which loads the stripe checkout element on the checkout page. During the loading of the stripe checkout page a call is made to the apps backend to create a pamyent intent with stripe using `stripe.paymentIntents.create`. The payment intent is created with the amount of the book and the currency of the book including a metadata field with the book title. The payment intent is then returned to the frontend and the stripe element is loaded with the payment intent client secret.
+
+The checkout page has two additional form items to collect the user's name and email address. The user can then enter their payment details and complete the purchase within the larger form by clicking the submit button. A `stripe.confirmPayment` call is made to stripe which includes the name and email address of the user that is retrieved from this form as well params from the stripe element.
+
+During the `stripe.confirmPayment` call a `return_url` is set to the success endpoint. If the payment is successful the user is redirected to the success page with query params including a payment intent id. The success endpoint makes a call to the backend to retrieve the payment intent and the book title from the metadata field. This passed onto to render the success page then displays a success message with the book title and the payment intent id.
 
 ### Architecture Sequence Diagram
 
