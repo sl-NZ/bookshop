@@ -89,7 +89,7 @@ After some thought, I decided to break down the problem into multiple phases to 
 
 ### Future Improvements and Robustness
 - **Service Layer for Backend Code**: Refactor the backend code into a service layer to make it more modular and testable.
-- **Modern Frontend Framework**: Refactor the frontend code to use a modern framework like React, which Stripe supports.
+- **Modern Frontend Framework**: Refactor the frontend code to use a framework like React, which Stripe supports.
 - **Enhanced Validation**: Implement more robust validation throughout the flow, such as email validation.
 - **Database Integration**: Store selected items and payment details in a database for persistence and future reference.
 - **Webhook Integration**: Utilise Stripe webhooks to trigger events like sending confirmation emails to customers.
