@@ -71,7 +71,7 @@ During the `stripe.confirmPayment` call a `return_url` is set to the success end
 ## Solving this Problem
 I took some time going over the problem statement by the team and the existing codebase, I decided to use the existing node project as a base and build on top of it. Based on my interpretation the outcome of the project was to ensure that a user should be able to select a book and purchase it through the stripe embedded checkout flow element on the checkout page and once a successful payment is made the confirmation of purchase including the retrieved stripe intent ID should be displayed on the success page. This made me think about the problem in 3 parts, namely `selection`, `checkout` and `success`
 
-
+### Breakdown of the Problem
 After some thought I decided that I need to breakdown the problem into multiple phases to help me build out the solution. The 5 phases I came up with were:
    - **_Phase 1_**: Setup the project and get it running locally in a `dev container`. This included setting up the project in vscode dev container and running the project locally. This setup also included ensuring that the app could be debugged within the container.
    - **_Phase 2_**: `Selection` of a book and setting up a payment intent when then the user was redirected to the checkout page. At this point I decided that I needed learn more about some of the basic stripe payment flows and seeked through research a quickstart example, I primarily used the [Custom Payment flow](https://docs.stripe.com/payments/quickstart?lang=node&client=html) example found in the Stripe docs, as well as the idea of a payment intent as per diagram found in the [PaymentIntent](https://docs.stripe.com/payments/accept-a-payment?platform=web&ui=elements#web-create-intent) docs. I noted that as soon as the chekout page loads a payment intent is created on stripe and the returned secret is used to create the payment form on the client.
@@ -79,7 +79,13 @@ After some thought I decided that I need to breakdown the problem into multiple 
    - **_Phase 4_**: `Success` of the payment and displaying the confirmation. I thought this area as the final main page that the user had to visit. My thoughts on this was that if the payment was successful then it should direct the user to the success page. I noted that the `confirmPayment` call had a `return_url` parameter that could be set to the success page and the scaffolding code already had a route to the page with a templated render. I tested this flow and it worked. I went back to the brief of the problem statement and noted that the Stripe Payment Intent ID had to be displayed on the success page, and I noted that this was being passed a addition to `return_url` as query params so I used this value and passed it to the frontend to display when it rendered.
    - **_Phase 5_**: `Add more colour`. I approached the overall problem is doing the bare minimum to do the scaffolding of the flow using the quickstart guide as a reference. In this final phase I decided to go through each of the previous areas and add more value in the flow. Example in the checkout flow previously email and name was not being passed so I decided that I would add these fields to the form and pass them to the stripe, I noted in the stripe dashboard that fraud scoring was lower with these values being passed. Simialrly the book title was created in the payment intent when the user got redirected to the checkout page and finally additionally outputs were retrieved from stripe to display on the success page.
 
-#### Reference Links
+### Challenges Faced
+- I have not worked much in frontend code so it took me some time to understand to understand how client side and server code interacted with each other. 
+- The architecture of the client side directly interacting with stripe API using JS was new to me and I had to spend some time understanding this, I found the the quickstart example helped.
+- I had some trouble moving on from the checkout page to the success page when the submit button was pressed and that took some time to debug, i evenutally found that the quickstart example I had use had a form name `payment-form` but also there was another existing form called `payment-form` in the `checkout.hbs` file that was causing the issue as the `checkout.js` was not able to find the correct form to submit.
+- Overall the code space is not something I am familiar with so a general interesting challenge but I really enjoyed thinking about the problem in terms of the ideal flow and the rules of engagmene between the client and server side when interacting with stripe.
+
+#### Documentation Used
 
 - https://docs.stripe.com/payments/quickstart?lang=node&client=html
 - https://docs.stripe.com/payments/elements
