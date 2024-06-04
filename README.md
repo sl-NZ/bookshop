@@ -14,6 +14,8 @@ We're using the [Bootstrap](https://getbootstrap.com/docs/4.6/getting-started/in
 
 To simplify this project, we're also not using any database here, either. Instead `app.js` includes a simple switch statement to read the GET params for `item`.
 
+# Submission - Sanil
+
 ## Local Development Setup
 
 For below instructions you will need vscode and docker installed on your machine.
@@ -64,7 +66,6 @@ Frontend Uses via Stripe JS:
 - `stripe.elements` to create a payment element. Reference to API docs is https://docs.stripe.com/js/elements_object/create_payment_element. This is rendered using the clientSecret passed from backend.
 - `stripe.confirmPayment` to confirm the payment. Reference to API docs is https://docs.stripe.com/js/payment_intents/confirm_payment. This is called when the user submits the payment form.
 - `stripe.retrievePaymentIntent` to retrieve the payment intent and used to determine payment status. Reference to API docs is https://docs.stripe.com/js/payment_intents/retrieve_payment_intent. This is called when the checkout page loads.
-
 
 #### Reference Links
 
