@@ -18,8 +18,11 @@ To simplify this project, we're also not using any database here, either. Instea
 
 ## Local Development Setup
 
-For below instructions you will need vscode and docker installed on your machine.
+**Prerequisites:**
+- Visual Studio Code(VSCode)
+- Docker
 
+**Steps:**
 1. Clone the repository to your local machine
    ```bash
    git clone https://github.com/sl-NZ/bookshop
@@ -28,7 +31,7 @@ For below instructions you will need vscode and docker installed on your machine
 2. Open the repository folder `bookshop` using vscode
 3. Open the command palette (`Cmd+Shift+P` or `F1`) and run the command `>Dev Containers: Rebuild and Reopen in Container`
 4. This will reopen the project in a docker container with all the required dependencies installed, this may take some time the first time as it will download the required docker images.
-5. Once the container is up and running, creaate a `.env` file similar to the `sample.env` file and add your stripe test API keys from the [stripe dashboard](https://dashboard.stripe.com)
+5. Once the container is up and running, create a `.env` file similar to the `sample.env` file and add your Stripe test API keys from the [Stripe Dashboard](https://dashboard.stripe.com)
 6. You can start the application by Run --> Start Debugging or `F5` or by running the below command in the terminal.
 
    ```bash
@@ -41,8 +44,7 @@ For below instructions you will need vscode and docker installed on your machine
 7. Navigate to [http://localhost:3000](http://localhost:3000) to view the index page.
 
 ## How does the Solution Work
-
-Solutions presented where the user can select a single book to purchase from the landing page of the Stripe Press Bookshop.
+The solution allows users to select a single book to purchase from the landing page of the Stripe Press Bookshop.
 
 The user can select a book by clicking on the purchase button. The purchase button will trigger the stripe checkout flow which loads the stripe checkout element on the checkout page. During the loading of the stripe checkout page a call is made to the apps backend to create a pamyent intent with stripe using `stripe.paymentIntents.create`. The payment intent is created with the amount of the book and the currency of the book including a metadata field with the book title. The payment intent is then returned to the frontend and the stripe element is loaded with the payment intent client secret.
 
