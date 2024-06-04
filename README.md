@@ -88,17 +88,17 @@ After some thought, I decided to break down the problem into multiple phases to 
 - Overall the code space is not something I am familiar with so a general interesting challenge but I really enjoyed thinking about the problem in terms of the ideal flow and the rules of engagmene between the client and server side when interacting with stripe.
 
 ### Future Improvements and Robustness
-- The backend code would be placed into a service layer to make it more modular and testable, e.g. controller folders possible.
-- The frontend code would be refactored to use a more modern framework like React I believe stripe supports [this](https://docs.stripe.com/stripe-js/react).
-- A lot more validation through the flow, e.g. email etc.
-- The items selected are running in memory though a database would be used in a real world scenario.
-- The success endpoint retrieves information from stripe using the payment intent id, this could be stored in a database for future reference though I also was wondering if this would be best endpoint to retrieve details
-- I note stripe has webhooks that could be fired in different events, flows such as a email to the customer could be added
-- Adding a cart system where customers could purchase multiple books at once.
-- More options around payment methods as well as capturing more information about the customer.
-- Possibly looking into options of whether we can move away from `custom pamyent flow` to `stripe hosted page` or `embedded form` to reduce the amount of client side code required.
-- 1 click checkout for returning customers.
-- Testing around the core and considering security implications for the setup.
+- **Service Layer for Backend Code**: Refactor the backend code into a service layer to make it more modular and testable.
+- **Modern Frontend Framework**: Refactor the frontend code to use a modern framework like React, which Stripe supports.
+- **Enhanced Validation**: Implement more robust validation throughout the flow, such as email validation.
+- **Database Integration**: Store selected items and payment details in a database for persistence and future reference.
+- **Webhook Integration**: Utilise Stripe webhooks to trigger events like sending confirmation emails to customers.
+- **Cart System**: Implement a cart system to allow customers to purchase multiple books at once.
+- **Additional Payment Methods**: Provide more payment methods and capture more customer information.
+- **Optimised Checkout Flow**: Consider using Stripe-hosted pages or embedded forms to reduce client-side code
+- **One-Click Checkout**: Implement one-click checkout for returning customers.
+- **Security and Testing**: Conduct thorough testing and consider security implications for the setup.
+
 
 ### Documentation Used
 
