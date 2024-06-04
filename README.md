@@ -86,7 +86,7 @@ After some thought I decided that I need to breakdown the problem into multiple 
 - Overall the code space is not something I am familiar with so a general interesting challenge but I really enjoyed thinking about the problem in terms of the ideal flow and the rules of engagmene between the client and server side when interacting with stripe.
 
 ### Future Improvements and Robustness
-- The backend code would be placed into a service layer to make it more modular and testable.
+- The backend code would be placed into a service layer to make it more modular and testable, e.g. controller folders possible.
 - The frontend code would be refactored to use a more modern framework like React I believe stripe supports [this](https://docs.stripe.com/stripe-js/react).
 - A lot more validation through the flow, e.g. email etc.
 - The items selected are running in memory though a database would be used in a real world scenario.
