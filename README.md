@@ -38,6 +38,12 @@ For below instructions you will need vscode and docker installed on your machine
 
 7. Navigate to [http://localhost:3000](http://localhost:3000) to view the index page.
 
+## How does the Solution Work
+
+### Architecture Sequence Diagram
+
+![Architecture Sequence Diagram](/docs/img/stripe_bookshop_architecture.png)
+
 ### SL Notes
 
 #### Reference Links
@@ -47,5 +53,6 @@ For below instructions you will need vscode and docker installed on your machine
 - https://docs.stripe.com/api/payment_intents/create
 - https://docs.stripe.com/js/elements_object/create_payment_element
 - https://docs.stripe.com/js/elements_object/create_payment_element
+- https://docs.stripe.com/js/payment_intents/confirm_payment
 - https://github.com/stripe-samples/accept-a-payment/blob/main/payment-element/server/node/server.js
 - https://docs.stripe.com/libraries/stripejs-esmodule
